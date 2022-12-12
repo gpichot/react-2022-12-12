@@ -1,0 +1,20 @@
+.pokemonForm {
+  max-width: 800px;
+  margin: 3rem auto;
+  border-top: 1px solid #33333322;
+  border-bottom: 1px solid #33333322;
+  padding: 2rem;
+}
+.pokemonFormFields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 0 20px;
+}
+
+.successMessage {
+  margin: 1rem auto;
+  color: green;
+  background-color: #e6ffe6;
+  border: 1px solid #b3ffb3;
+  border-radius: 5px;
+}

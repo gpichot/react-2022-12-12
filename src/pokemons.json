@@ -1,59 +1,201 @@
-[
-  {
-    "id": "cl8yi3o9u000qfef0zujz4oq3",
-    "name": "TEst",
-    "types": ["grass"],
-    "weight": 42,
-    "height": 10,
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-    "base_experience": 0,
-    "forms": [],
-    "abilities": [],
-    "stats": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0,
-      "special-attack": 0,
-      "special-defense": 0,
-      "speed": 0
+{
+  "count": 1154,
+  "next": "https://pokeapi.fly.dev/gpichot20221212/pokemons?limit=10&offset=10&searchText=",
+  "nextLimit": 10,
+  "nextOffset": 10,
+  "previousLimit": null,
+  "previousOffset": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "bulbasaur",
+      "types": ["grass", "poison"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "weight": 69,
+      "height": 7,
+      "base_experience": 64,
+      "forms": ["bulbasaur"],
+      "abilities": ["overgrow", "chlorophyll"],
+      "stats": {
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "special-attack": 65,
+        "special-defense": 65,
+        "speed": 45
+      }
+    },
+    {
+      "id": 2,
+      "name": "ivysaur",
+      "types": ["grass", "poison"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+      "weight": 130,
+      "height": 10,
+      "base_experience": 142,
+      "forms": ["ivysaur"],
+      "abilities": ["overgrow", "chlorophyll"],
+      "stats": {
+        "hp": 60,
+        "attack": 62,
+        "defense": 63,
+        "special-attack": 80,
+        "special-defense": 80,
+        "speed": 60
+      }
+    },
+    {
+      "id": 3,
+      "name": "venusaur",
+      "types": ["grass", "poison"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+      "weight": 1000,
+      "height": 20,
+      "base_experience": 263,
+      "forms": ["venusaur"],
+      "abilities": ["overgrow", "chlorophyll"],
+      "stats": {
+        "hp": 80,
+        "attack": 82,
+        "defense": 83,
+        "special-attack": 100,
+        "special-defense": 100,
+        "speed": 80
+      }
+    },
+    {
+      "id": 4,
+      "name": "charmander",
+      "types": ["fire"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      "weight": 85,
+      "height": 6,
+      "base_experience": 62,
+      "forms": ["charmander"],
+      "abilities": ["blaze", "solar-power"],
+      "stats": {
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "special-attack": 60,
+        "special-defense": 50,
+        "speed": 65
+      }
+    },
+    {
+      "id": 5,
+      "name": "charmeleon",
+      "types": ["fire"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+      "weight": 190,
+      "height": 11,
+      "base_experience": 142,
+      "forms": ["charmeleon"],
+      "abilities": ["blaze", "solar-power"],
+      "stats": {
+        "hp": 58,
+        "attack": 64,
+        "defense": 58,
+        "special-attack": 80,
+        "special-defense": 65,
+        "speed": 80
+      }
+    },
+    {
+      "id": 6,
+      "name": "charizard",
+      "types": ["fire", "flying"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "weight": 905,
+      "height": 17,
+      "base_experience": 267,
+      "forms": ["charizard"],
+      "abilities": ["blaze", "solar-power"],
+      "stats": {
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "special-attack": 109,
+        "special-defense": 85,
+        "speed": 100
+      }
+    },
+    {
+      "id": 7,
+      "name": "squirtle",
+      "types": ["water"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+      "weight": 90,
+      "height": 5,
+      "base_experience": 63,
+      "forms": ["squirtle"],
+      "abilities": ["torrent", "rain-dish"],
+      "stats": {
+        "hp": 44,
+        "attack": 48,
+        "defense": 65,
+        "special-attack": 50,
+        "special-defense": 64,
+        "speed": 43
+      }
+    },
+    {
+      "id": 8,
+      "name": "wartortle",
+      "types": ["water"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
+      "weight": 225,
+      "height": 10,
+      "base_experience": 142,
+      "forms": ["wartortle"],
+      "abilities": ["torrent", "rain-dish"],
+      "stats": {
+        "hp": 59,
+        "attack": 63,
+        "defense": 80,
+        "special-attack": 65,
+        "special-defense": 80,
+        "speed": 58
+      }
+    },
+    {
+      "id": 9,
+      "name": "blastoise",
+      "types": ["water"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+      "weight": 855,
+      "height": 16,
+      "base_experience": 265,
+      "forms": ["blastoise"],
+      "abilities": ["torrent", "rain-dish"],
+      "stats": {
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "special-attack": 85,
+        "special-defense": 105,
+        "speed": 78
+      }
+    },
+    {
+      "id": 10,
+      "name": "caterpie",
+      "types": ["bug"],
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
+      "weight": 29,
+      "height": 3,
+      "base_experience": 39,
+      "forms": ["caterpie"],
+      "abilities": ["shield-dust", "run-away"],
+      "stats": {
+        "hp": 45,
+        "attack": 30,
+        "defense": 35,
+        "special-attack": 20,
+        "special-defense": 20,
+        "speed": 45
+      }
     }
-  },
-  {
-    "id": "cl8yi0ssj000ifef0tt8z4q8n",
-    "name": "Mutation",
-    "types": ["electric"],
-    "weight": 14,
-    "height": 10,
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-    "base_experience": 0,
-    "forms": [],
-    "abilities": [],
-    "stats": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0,
-      "special-attack": 0,
-      "special-defense": 0,
-      "speed": 0
-    }
-  },
-  {
-    "id": "cl8yhyug8000cfef0gdkj22ur",
-    "name": "test",
-    "types": ["test"],
-    "weight": 10,
-    "height": 10,
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-    "base_experience": 0,
-    "forms": [],
-    "abilities": [],
-    "stats": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0,
-      "special-attack": 0,
-      "special-defense": 0,
-      "speed": 0
-    }
-  }
-]
+  ]
+}

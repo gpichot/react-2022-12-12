@@ -1,0 +1,22 @@
+.inputControl {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.inputControlRequired {
+  label:after {
+    content: "*";
+    color: red;
+  }
+}
+.inputControl label {
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.inputControl input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #33333344;
+  border-radius: 5px;
+  font-size: 1rem;
+}
