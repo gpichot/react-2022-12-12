@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { usePokedex } from "../PokedexContext";
 import { PokemonDetail } from "../types";
 import PokemonTypePill from "./PokemonTypePill";
 
@@ -24,6 +25,18 @@ export default function PokemonCard(props: PokemonCardProps) {
     <PokemonTypePill key={type} type={type} />
   ));
 
+  const { pokemonIds, addPokemon, removePokemon } = usePokedex();
+
+  const isPokemonInPokedex = pokemonIds.includes(pokemon.id);
+
+  const handleCaptureOrRelease = () => {
+    if (isPokemonInPokedex) {
+      removePokemon(pokemon.id);
+    } else {
+      addPokemon(pokemon.id);
+    }
+  };
+
   return (
     <div
       className={styles.pokemonCard}
@@ -34,12 +47,19 @@ export default function PokemonCard(props: PokemonCardProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {isPokemonInPokedex && (
+        <div className={styles.pokemonCard__inPokedex}>In Pokedex</div>
+      )}
       <div className={styles.pokemonContent}>
         <h2 className={styles.pokemonCardName}>{pokemon.name}</h2>
         <img src={pokemon.image} alt={pokemon.name} height={96} />
         <p>{types}</p>
       </div>
       <div className={styles.pokemonCardActions}>
+        <button onClick={handleCaptureOrRelease}>
+          {isPokemonInPokedex ? "Release" : "Capture"}
+        </button>
+
         <Link to={`/pokemons/${pokemon.id}`}>Details</Link>
       </div>
     </div>

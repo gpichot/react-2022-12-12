@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 
+import { usePokedex } from "@/features/pokemons/PokedexContext";
 import useFetchResource from "@/hooks/useFetchResource";
 
 import PokemonTypePill from "./PokemonTypePill";
@@ -12,6 +13,8 @@ export default function PokemonDetailsPage() {
     `https://pokeapi.fly.dev/gpichot20221212/pokemons/${id}`
   );
 
+  const { pokemonIds, addPokemon, removePokemon } = usePokedex();
+
   if (pokemonDetail.isLoading) {
     return <p>Loading...</p>;
   }
@@ -21,6 +24,16 @@ export default function PokemonDetailsPage() {
   }
 
   const pokemon = pokemonDetail.data;
+
+  const isPokemonInPokedex = pokemonIds.includes(pokemon.id);
+
+  const handleCaptureOrRelease = () => {
+    if (isPokemonInPokedex) {
+      removePokemon(pokemon.id);
+    } else {
+      addPokemon(pokemon.id);
+    }
+  };
 
   return (
     <>
@@ -32,6 +45,10 @@ export default function PokemonDetailsPage() {
       {pokemon.types.map((type) => (
         <PokemonTypePill key={type} type={type} />
       ))}
+
+      <button onClick={handleCaptureOrRelease}>
+        {isPokemonInPokedex ? "Release" : "Capture"}
+      </button>
 
       <h2>Abilities</h2>
       <ul>

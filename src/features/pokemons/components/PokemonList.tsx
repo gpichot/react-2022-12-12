@@ -1,10 +1,13 @@
-import pokemons from "@/pokemons.json";
-
 import PokemonCard from "./PokemonCard";
 
-export default function PokemonList() {
+function PokemonListStatistics({ pokemons }) {
+  return <p>{pokemons.length}</p>;
+}
+
+export default function PokemonList({ pokemons }) {
   return (
     <>
+      <PokemonListStatistics pokemons={pokemons} />
       <div
         style={{
           display: "grid",
