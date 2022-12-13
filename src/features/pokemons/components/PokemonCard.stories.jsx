@@ -1,3 +1,5 @@
+import { BrowserRouter } from "react-router-dom";
+
 import pokemons from "@/pokemons.json";
 
 import PokemonCard from "./PokemonCard";
@@ -7,7 +9,11 @@ export default {
   component: PokemonCard,
 };
 
-const Template = (args) => <PokemonCard {...args} />;
+const Template = (args) => (
+  <BrowserRouter>
+    <PokemonCard {...args} />
+  </BrowserRouter>
+);
 
 export const Bulbasaur = Template.bind({});
 Bulbasaur.args = {
