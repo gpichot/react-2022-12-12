@@ -6,9 +6,15 @@ import PokemonCard from "./PokemonCard";
 
 export default function PokemonList() {
   const [offset, setOffset] = React.useState(0);
+  const [searchText, setSearchText] = React.useState("");
 
-  const url = `https://pokeapi.fly.dev/gpichot20221212/pokemons?offset=${offset}&limit=9`;
-  const { data: pokemons, isLoading, error } = useFetchResource(url);
+  const url = `https://pokeapi.fly.dev/gpichot20221212/pokemons?offset=${offset}&limit=9&searchText=${searchText}`;
+  const {
+    data: pokemons,
+    isLoading,
+    isFetching,
+    error,
+  } = useFetchResource(url);
 
   if (isLoading || !pokemons) {
     return <p>Loading...</p>;
@@ -32,6 +38,7 @@ export default function PokemonList() {
         >
           Previous
         </button>
+        {isFetching ? <p>Fetching...</p> : <p>-</p>}
         <button
           disabled={!pokemons.next}
           onClick={() => setOffset(pokemons.nextOffset)}
@@ -39,6 +46,17 @@ export default function PokemonList() {
           Next
         </button>
       </nav>
+      <input
+        type="text"
+        placeholder="Search"
+        style={{
+          width: "100%",
+          padding: "0.5rem",
+          fontSize: "1.5rem",
+          margin: "1rem 0",
+        }}
+        onBlur={(e) => setSearchText(e.target.value)}
+      />
       <div
         style={{
           display: "grid",
