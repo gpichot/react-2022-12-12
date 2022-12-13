@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import pokemons from "@/pokemons.json";
 
+import { PokedexProvider } from "../PokedexContext";
 import PokemonCard from "./PokemonCard";
 
 export default {
@@ -11,7 +12,9 @@ export default {
 
 const Template = (args) => (
   <BrowserRouter>
-    <PokemonCard {...args} />
+    <PokedexProvider>
+      <PokemonCard {...args} />
+    </PokedexProvider>
   </BrowserRouter>
 );
 
