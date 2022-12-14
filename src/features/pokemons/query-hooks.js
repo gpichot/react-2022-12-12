@@ -10,7 +10,7 @@ export const QueryKeys = {
 };
 
 export async function fetchPokemons({ offset, limit, searchText }) {
-  const url = `https://pokeapi.fly.dev/gpichot20221212/pokemons/?offset=${offset}&limit=${limit}&searchText=${searchText}`;
+  const url = `https://pokeapi.fly.dev/gpichot2220221212/pokemons/?offset=${offset}&limit=${limit}&searchText=${searchText}`;
 
   await sleep(2000);
   const response = await fetch(url);
@@ -25,7 +25,8 @@ export function usePokemonListQuery({ offset, limit, searchText }) {
     () => fetchPokemons({ offset, limit, searchText }),
     {
       keepPreviousData: true,
-      staleTime: 10 * 1000,
+      staleTime: 30 * 1000,
+      //refetchOnMount: false,
     }
   );
 }

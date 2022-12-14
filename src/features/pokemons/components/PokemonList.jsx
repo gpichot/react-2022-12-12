@@ -11,22 +11,21 @@ export default function PokemonList() {
   const [searchText, setSearchText] = React.useState("");
   const [currentView, setCurrentView] = React.useState("cards");
 
-  const {
-    data: pokemonsData,
-    isLoading,
-    isFetching,
-    isError,
-  } = usePokemonListQuery({ offset, limit, searchText });
+  const query = usePokemonListQuery({ offset, limit, searchText });
+
+  const { data: pokemonsData, isLoading, isFetching, isError } = query;
 
   const queryClient = useQueryClient();
 
   // Fetch next page
   React.useEffect(() => {
     const newParams = { offset: offset + limit, limit, searchText };
-    console.log("Fetch new page", newParams);
+
     const queryKey = QueryKeys.pokemonList(newParams);
     queryClient.prefetchQuery(queryKey, () => fetchPokemons(newParams));
   }, [offset, queryClient, searchText]);
+
+  console.log("Render", query.status, query);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -39,6 +38,7 @@ export default function PokemonList() {
 
   return (
     <>
+      <button onClick={() => query.refetch()}>Refetch</button>
       <nav
         style={{
           display: "flex",
@@ -99,6 +99,8 @@ export default function PokemonList() {
   );
 }
 
+const MemoizedPokemonCard = React.memo(PokemonCard);
+
 function PokemonCardList({ pokemons }) {
   return (
     <div
@@ -110,7 +112,7 @@ function PokemonCardList({ pokemons }) {
       }}
     >
       {pokemons.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        <MemoizedPokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
     </div>
   );

@@ -12,7 +12,7 @@ export default function PokemonDetailsPage() {
   const params = useParams();
   const { id } = params;
 
-  const url = `https://pokeapi.fly.dev/gpichot20221212/pokemons/${id}`;
+  const url = `https://pokeapi.fly.dev/gpichot2220221212/pokemons/${id}`;
   const pokemonDetailQuery = useQuery(
     ["pokemon-detail", id],
     async () => {
