@@ -1,36 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 
-import useFetchResource from "@/hooks/useFetchResource";
-
+import { fetchPokemons, QueryKeys, usePokemonListQuery } from "../query-hooks";
 import PokemonCard from "./PokemonCard";
 
+const limit = 9;
 export default function PokemonList() {
   const [offset, setOffset] = React.useState(0);
   const [searchText, setSearchText] = React.useState("");
   const [currentView, setCurrentView] = React.useState("cards");
 
-  const url = `https://pokeapi.fly.dev/gpichot20221212/pokemons?offset=${offset}&limit=400`;
   const {
     data: pokemonsData,
     isLoading,
     isFetching,
-    error,
-  } = useFetchResource(url);
+    isError,
+  } = usePokemonListQuery({ offset, limit, searchText });
 
-  const pokemons = React.useMemo(() => {
-    return pokemonsData?.results.filter((pokemon) =>
-      pokemon.name.includes(searchText)
-    );
-  }, [searchText, pokemonsData?.results]);
+  const queryClient = useQueryClient();
 
-  if (isLoading || !pokemonsData) {
+  // Fetch next page
+  React.useEffect(() => {
+    const newParams = { offset: offset + limit, limit, searchText };
+    console.log("Fetch new page", newParams);
+    const queryKey = QueryKeys.pokemonList(newParams);
+    queryClient.prefetchQuery(queryKey, () => fetchPokemons(newParams));
+  }, [offset, queryClient, searchText]);
+
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if (isError) {
     return <p>Error</p>;
   }
+  const pokemons = pokemonsData.results;
 
   return (
     <>

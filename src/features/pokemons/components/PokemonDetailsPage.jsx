@@ -1,29 +1,42 @@
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 import { usePokedex } from "@/features/pokemons/PokedexContext";
 import useFetchResource from "@/hooks/useFetchResource";
 
 import PokemonTypePill from "./PokemonTypePill";
 
+const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export default function PokemonDetailsPage() {
   const params = useParams();
   const { id } = params;
 
-  const pokemonDetail = useFetchResource(
-    `https://pokeapi.fly.dev/gpichot20221212/pokemons/${id}`
+  const url = `https://pokeapi.fly.dev/gpichot20221212/pokemons/${id}`;
+  const pokemonDetailQuery = useQuery(
+    ["pokemon-detail", id],
+    async () => {
+      await sleep(2000);
+      const response = await fetch(url);
+      return response.json();
+    },
+    {
+      staleTime: 10 * 1000,
+      cacheTime: 10 * 1000,
+    }
   );
 
   const { pokemonIds, addPokemon, removePokemon } = usePokedex();
 
-  if (pokemonDetail.isLoading) {
+  if (pokemonDetailQuery.isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (pokemonDetail.error) {
+  if (pokemonDetailQuery.isError) {
     return <p>Something went wrong</p>;
   }
 
-  const pokemon = pokemonDetail.data;
+  const pokemon = pokemonDetailQuery.data;
 
   const isPokemonInPokedex = pokemonIds.includes(pokemon.id);
 
@@ -41,6 +54,10 @@ export default function PokemonDetailsPage() {
       <div>
         <img src={pokemon.image} alt={pokemon.name} />
       </div>
+
+      <p>{pokemonDetailQuery.isFetching ? "Fetching" : "-"}</p>
+
+      <button onClick={() => pokemonDetailQuery.refetch()}>Refetch</button>
 
       {pokemon.types.map((type) => (
         <PokemonTypePill key={type} type={type} />
